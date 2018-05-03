@@ -209,10 +209,10 @@ void *display_task(void *arg_in) {
     buffer = create_bitmap(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     // Initialize the period of the task and the next action time
-	period.tv_sec = 0;
-	period.tv_nsec = DISPLAY_PERIOD; 
+    period.tv_sec = 0;
+    period.tv_nsec = DISPLAY_PERIOD; 
 
-	next_act = tx0;
+    next_act = tx0;
 
     do {
         // exit the program if exit_flag is 0
@@ -283,10 +283,10 @@ void *kalman_task(void *arg_in) {
     Vector4f c, m;
 
     // Initialize the period of the task and the next action time
-	period.tv_sec = 0;
-	period.tv_nsec = KALMAN_PERIOD; 
+    period.tv_sec = 0;
+    period.tv_nsec = KALMAN_PERIOD; 
 
-	next_act = tx0;
+    next_act = tx0;
 
     do {
         // get the last measurement and update the vector of measurements accordingly
@@ -341,10 +341,10 @@ void *keyboard_task(void *arg_in) {
     char scan, ascii;
 
     // Initialize the period of the task and the next action time
-	period.tv_sec = 0;
-	period.tv_nsec = KEYBOARD_PERIOD; 
+    period.tv_sec = 0;
+    period.tv_nsec = KEYBOARD_PERIOD; 
 
-	next_act = tx0;
+    next_act = tx0;
 
     do {
         // get the key pressed by the user
@@ -404,7 +404,7 @@ int main(){
 
     // initialize the clock
     clock_gettime(CLOCK_REALTIME, &t0);     // "zero" time
-	clock_gettime(CLOCK_MONOTONIC, &tx0);
+    clock_gettime(CLOCK_MONOTONIC, &tx0);
     
     // create the threads
     pthread_create(&thread_display, NULL, display_task, NULL);
