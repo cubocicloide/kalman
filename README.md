@@ -22,7 +22,7 @@ Once that the above dependencies has been installed, the program can be compiled
 
 ---
 ## Run the program
-After the compilation, the `makefile` can be used to run the program, as follow:
+After the compilation, the `makefile` can be used to run the program, as follows:
 
 ```zsh
 ➜  project-directory    make run
