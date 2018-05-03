@@ -39,9 +39,11 @@ After the compilation, the `makefile` can be used to run the program, as follow:
 
 ---
 ## Further informations
-For a detailed description of the project structure see the docs.
+For a detailed description of the project structure see the [docs].
 
-[link]: https://www.cs.utexas.edu/~teammco/misc/kalman_filter/
-[g++]: https://www.cs.fsu.edu/~myers/howto/g++compiling.txt
-[eigen3]: http://eigen.tuxfamily.org/index.php?title=Main_Page
+
 [allegro4]: http://liballeg.org/index.html
+[docs]: https://github.com/cubocicloide/kalman/blob/master/docs.pdf
+[eigen3]: http://eigen.tuxfamily.org/index.php?title=Main_Page
+[g++]: https://www.cs.fsu.edu/~myers/howto/g++compiling.txt
+[link]: https://www.cs.utexas.edu/~teammco/misc/kalman_filter/
