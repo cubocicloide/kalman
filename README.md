@@ -34,7 +34,7 @@ After the compilation, the `makefile` can be used to run the program, as follows
 
 2. The `makefile` can also be used to clean the program, in this case just run the command:
     ```zsh
-    ➜  project-directory    make run
+    ➜  project-directory    make clean
     ```
 
 ---
