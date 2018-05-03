@@ -173,10 +173,13 @@ void kalman_iterate(Vector4f c, Vector4f m) {
     x = A * x + B * c;
     P = A * P * A.transpose() + Q;
 
-    // Correction step
+    // Correction step (as in the link provided in the project assignment)
     K = P * H.transpose() * ( H * P * H.transpose() + R ).inverse();
     x = x + K * (m - H * x);
     P = ( I - K * H ) * P;
+    // Correction step (as I know from the theory):
+    // P = ( I - K * H ) * P * (I - K * H).transpose() + K * R * K.transpose();
+    
 
     // If prediction is enabled, the prediction step is looped for FRAME_PER_SECOND * PREDICT_AMOUNT frames
     if (prediction_flag == 1) {
@@ -311,7 +314,7 @@ void *kalman_task(void *arg_in) {
             m(0) = measurement[MEASUREMENT_LENGHT - 1][0];
             m(1) = measurement[MEASUREMENT_LENGHT - 1][1];
             m(2) = (float) (m(0) - measurement[MEASUREMENT_LENGHT - 2][0]) * 1000000000 / KALMAN_PERIOD;
-            m(3) = (m(1) - measurement[MEASUREMENT_LENGHT - 2][1]) * 1000000000 / KALMAN_PERIOD;
+            m(3) = (float) (m(1) - measurement[MEASUREMENT_LENGHT - 2][1]) * 1000000000 / KALMAN_PERIOD;
 
             pthread_mutex_lock(&mux_prediction);
                 kalman_iterate(c, m);
