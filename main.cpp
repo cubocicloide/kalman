@@ -210,7 +210,7 @@ void timespec_add(struct timespec *t1, struct timespec *t2) {
 // Manage the display
 void *display_task(void *arg_in) {
     BITMAP *buffer; 
-	struct timespec next_act, period;
+    struct timespec next_act, period;
 
     //Create the buffer
     buffer = create_bitmap(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -343,7 +343,7 @@ void *kalman_task(void *arg_in) {
 
 // Manage the keyboard
 void *keyboard_task(void *arg_in) {
-	struct timespec next_act, period;
+    struct timespec next_act, period;
     char scan, ascii;
 
     // Initialize the period of the task and the next action time
