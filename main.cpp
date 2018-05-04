@@ -70,6 +70,7 @@ pthread_t thread_keyboard;
 struct timespec t0, tx0;
 
 Matrix4f A, B, H, Q, R, I;
+Vector4f c;
 
 Matrix4f P;
 Vector4f x;
@@ -132,8 +133,11 @@ void init() {
     0, 0, 1, 0,
     0, 0, 0, 1;
 
+    c << 0, 0, 0, 0;
+
     // Kalman filter's inputs
     x << WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0, 0;
+
     prediction_x = x;
 
     P << 0, 0, 0, 0,
@@ -280,10 +284,10 @@ void *display_task(void *arg_in) {
 
 // Manage the Kalman's filter algorithm
 void *kalman_task(void *arg_in) {
-	struct timespec next_act, period;
+    struct timespec next_act, period;
     default_random_engine generator;
 
-    Vector4f c, m;
+    Vector4f m;
 
     // Initialize the period of the task and the next action time
     period.tv_sec = 0;
@@ -310,7 +314,6 @@ void *kalman_task(void *arg_in) {
                 trail[i][1] = trail[i + 1][1];
             }
 
-            c << 0, 0, 0, 0;
             m(0) = measurement[MEASUREMENT_LENGHT - 1][0];
             m(1) = measurement[MEASUREMENT_LENGHT - 1][1];
             m(2) = (float) (m(0) - measurement[MEASUREMENT_LENGHT - 2][0]) * 1000000000 / KALMAN_PERIOD;
