@@ -273,7 +273,7 @@ void *display_task(void *arg_in) {
 
         // update the next action variable and wait for the next period
         timespec_add(&next_act, &period);
-		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
         
     } while (exit_flag == 1);
     destroy_bitmap(buffer);
@@ -334,7 +334,7 @@ void *kalman_task(void *arg_in) {
 
         // update the next action variable and wait for the next period
         timespec_add(&next_act, &period);
-		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
 
     } while (exit_flag == 1); 
     pthread_exit(NULL);
@@ -395,7 +395,7 @@ void *keyboard_task(void *arg_in) {
 
         // update the next action variable and wait for the next period
         timespec_add(&next_act, &period);
-		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
+        clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &next_act, NULL);
         
     } while (exit_flag == 1); 
     pthread_exit(NULL);
