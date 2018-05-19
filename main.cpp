@@ -80,7 +80,7 @@ struct task_par	_tp[NUM_TASKS];
 
 /* UTILITY FUNCTIONS */
 // Initialize thread parameters and creates a thread
-int	task_create(int i, void* (*task)(void *), int period) {
+int task_create(int i, void* (*task)(void *), int period) {
     _tp[i].period.tv_sec = 0;
 	_tp[i].period.tv_nsec = period;
 	return pthread_create(&_tid[i], NULL, task, (void*)(&_tp[i]));
