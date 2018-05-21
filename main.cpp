@@ -45,7 +45,7 @@ using namespace Eigen;
 
 #define POINT_RADIUS            2
 
-#define	NUM_TASKS	            3
+#define	NUM_TASKS               3
 
 #define WINDOW_HEIGHT           480
 #define WINDOW_WIDTH            640
@@ -82,13 +82,13 @@ struct task_par	_tp[NUM_TASKS];
 // Initialize thread parameters and creates a thread
 int task_create(int i, void* (*task)(void *), int period) {
     _tp[i].period.tv_sec = 0;
-	_tp[i].period.tv_nsec = period;
-	return pthread_create(&_tid[i], NULL, task, (void*)(&_tp[i]));
+    _tp[i].period.tv_nsec = period;
+    return pthread_create(&_tid[i], NULL, task, (void*)(&_tp[i]));
 }
 
 // Suspends the calling task until the task with index i is terminated	
 void wait_for_task_end(int i) {
-	pthread_join(_tid[i], NULL);
+    pthread_join(_tid[i], NULL);
 }
 
 // Add timespec t2 to timespec t1
